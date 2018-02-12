@@ -16,7 +16,8 @@ set $menu dmenu_run -fn "InputMono-12px"
 # Your preferred web browser
 set $browser qutebrowser
 # Your preferred text editor
-set $editor emacs
+set $editor_client emacsclient -c -n
+set $editor_server emacs --daemon
 # Your preferred screen grabber
 set $grabscreen swaygrab
 # Your preferred screeen lock
@@ -86,7 +87,8 @@ font pango:Input Mono 12px
     bindsym $mod+quoteright exec $browser
 
     # text editor
-    bindsym $mod+semicolon exec $editor
+    bindsym $mod+semicolon exec $editor_client
+    bindsym $mod+Shift+semicolon exec $editor_server
 
     # screenshot
     bindsym Print exec $grabscreen
