@@ -3,5 +3,7 @@
 	email = sumitsahrawat@outlook.com
 [push]
 	default = simple
+[url "https://github.com/"]
+	insteadOf = gh:
 [url "https://aur.archlinux.org/"]
 	insteadOf = aur:
