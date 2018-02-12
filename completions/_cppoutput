@@ -1,0 +1,3 @@
+#compdef cppoutput
+
+_files -g "*.cpp"

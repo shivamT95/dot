@@ -1,0 +1,3 @@
+#compdef cppshow
+
+_files -g "*.cpp"

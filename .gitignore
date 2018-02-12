@@ -1,0 +1,10 @@
+emacs.d/.cabal-sandbox
+emacs.d/cabal.sandbox.config
+emacs.d/backups
+emacs.d/places
+emacs.d/smex-items
+emacs.d/eshell
+emacs.d/auto-save-list
+vim/.netrwhist
+logs
+*.swp

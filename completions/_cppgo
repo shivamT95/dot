@@ -1,0 +1,3 @@
+#compdef cppgo
+
+_files -g "*.cpp"

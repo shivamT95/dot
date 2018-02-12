@@ -1,0 +1,71 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+    colors = true
+    color_good = "#36E592"
+    color_degraded = "#CE9726"
+    color_bad = "#CE4B4F"
+    color_separator = "#B3BEFF"
+    interval = 1
+}
+
+order += "wireless wl01"
+order += "ethernet eno1"
+order += "path_exists Hotspot"
+order += "path_exists VPN"
+order += "path_exists Emacs"
+order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "battery 0"
+order += "volume master"
+order += "time"
+
+wireless wl01 {
+    format_up = " W: %ip on %essid (%quality) %bitrate "
+    format_down = " W: down "
+}
+
+ethernet eno1 {
+    format_up = " E: %ip %speed "
+    format_down = " E: down "
+}
+
+path_exists Hotspot {
+    path = "/proc/sys/net/ipv4/conf/ap0"
+    format=" %title: %status "
+}
+
+path_exists VPN {
+    # path exists when openvpn is connected
+    path = "/proc/sys/net/ipv4/conf/tun0"
+    format=" %title: %status "
+}
+
+path_exists Emacs {
+    # path exists when emacs daemon is active for any user
+    path = "/tmp/emacs1000/server"
+    format=" %title: %status "
+}
+
+cpu_usage {
+    format = " CPU: %usage "
+}
+
+cpu_temperature 0 {
+    format = " CPU: %degrees °C "
+}
+
+volume master {
+    format = " ♪: %volume "
+    format_muted = " ♪: muted (%volume) "
+}
+
+time {
+    format = " %a %_d %b %l:%M:%S %p "
+}

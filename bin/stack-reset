@@ -1,0 +1,93 @@
+#! /usr/bin/env bash
+
+function md_check () {
+    [[ ! -d $1 ]] && mkdir $1
+}
+
+function mv_check () {
+    [[ -d $1 || -f $1 ]] && [[ ! -h $1 ]] && [[ ! -e $2 ]] && mv $1 $2
+}
+
+function ln_check () {
+    [[ -f $1 || -d $1 ]] && ln -s $1 $2
+}
+
+function cabal_reset () {
+    md_check ~/.cabal-backup
+
+    mv_check ~/.cabal/packages ~/.cabal-backup
+    mv_check ~/.cabal/config   ~/.cabal-backup
+
+    # Remove other files
+    rm -rf ~/.cabal
+    md_check ~/.cabal
+
+    # Symlink from backup
+    ln -s ~/.cabal-backup/packages ~/.cabal/packages
+    ln -s ~/.cabal-backup/config ~/.cabal/config
+}
+
+function stack_reset () {
+    shopt -s nullglob
+
+    # Create ~/.stack-backup
+    md_check ~/.stack-backup
+    md_check ~/.stack-backup/programs
+    mv_check ~/.stack/indices     ~/.stack-backup
+    mv_check ~/.stack/build-plan  ~/.stack-backup
+    if [[ -d ~/.stack/programs ]]; then
+        for long_arch in ~/.stack/programs/* ; do
+            arch="$(basename $long_arch)"
+            md_check ~/.stack-backup/programs/$arch
+            for path in $long_arch/*.tar.xz ; do
+                mv_check $path ~/.stack-backup/programs/$arch
+            done
+        done
+    fi
+
+    # Remove other files
+    rm -rf ~/.stack
+    md_check ~/.stack
+    md_check ~/.stack/programs
+
+    # Symlink from backup
+    ln_check ~/.dot/stack-config.yaml ~/.stack/config.yaml
+    ln_check ~/.stack-backup/indices     ~/.stack/indices
+    ln_check ~/.stack-backup/build-plan  ~/.stack/build-plan
+    for dir_arch in ~/.stack-backup/programs/* ; do
+        arch="$(basename $dir_arch)"
+        md_check ~/.stack/programs/$arch
+        for f in $dir_arch/*.tar.xz ; do
+            ln_check $f ~/.stack/programs/$arch/"$(basename $f)"
+        done
+    done
+}
+
+function ghc_reset () {
+    # No backups for ~/.ghc
+    rm -rf ~/.ghc
+}
+
+function reset_on_args () {
+    [[ -z $* ]] && print_help
+    for arg in $* ; do
+        case $arg in
+            cabal) ghc_reset ; cabal_reset ;;
+            stack) stack_reset ;;
+            ghc) ghc_reset ;;
+            all) ghc_reset ; cabal_reset ; stack_reset ;;
+            *) echo "Unknown: $arg";;
+        esac
+    done
+}
+
+function print_help () {
+    echo "Usage: stack reset [OPTIONS]"
+    echo "  where OPTIONS is one of"
+    echo "    cabal: clean ~/.cabal and ~/.ghc"
+    echo "    stack: clean ~/.stack"
+    echo "    ghc: clean ~/.ghc"
+    echo "    all: clean all of the above"
+}
+
+reset_on_args;

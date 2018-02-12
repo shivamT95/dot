@@ -1,0 +1,3 @@
+#compdef cppinput
+
+_files -g "*.cpp"

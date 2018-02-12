@@ -1,0 +1,7 @@
+[user]
+	name = Sumit Sahrawat
+	email = sumitsahrawat@outlook.com
+[push]
+	default = simple
+[url "https://aur.archlinux.org/"]
+	insteadOf = aur:
