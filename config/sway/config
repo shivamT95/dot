@@ -44,7 +44,6 @@ default_border pixel
 new_float normal
 hide_edge_borders none
 smart_borders on
-for_window [class="termite"] border normal
 #
 # Font
 font pango:Input Mono 12px
