@@ -1,0 +1,86 @@
+#! /usr/bin/env zsh
+
+function md_if_missing () {
+    [[ ! -d $1 ]] && mkdir $1
+}
+
+function mv_to_backup () {
+    [[ -d $1 || -f $1 ]] && [[ ! -h $1 ]] && [[ ! -e $2 ]] && mv $1 $2
+}
+
+function link_from_backup () {
+    [[ -f $1 || -d $1 ]] && ln -sT $1 $2
+}
+
+function reset_ghc () {
+    rm -rf ~/.ghc
+}
+
+function reset_cabal () {
+    md_if_missing ~/.cabal-backup
+    mv_to_backup ~/.cabal/packages ~/.cabal-backup/packages
+    mv_to_backup ~/.cabal/config ~/.cabal-backup/config
+
+    rm -rf ~/.cabal
+
+    mkdir ~/.cabal
+    link_from_backup ~/.cabal-backup/packages ~/.cabal/packages
+    link_from_backup ~/.cabal-backup/config ~/.cabal/config
+}
+
+function reset_stack () {
+    md_if_missing ~/.stack-backup
+    mv_to_backup ~/.stack/indices ~/.stack-backup/indices
+    mv_to_backup ~/.stack/build-plan ~/.stack-backup/build-plan
+
+    if [[ -d ~/.stack/programs ]]; then
+        md_if_missing ~/.stack-backup/programs
+        for arch_path in ~/.stack/programs/* ; do
+            arch_dir="$(basename $arch_path)"
+            md_if_missing ~/.stack-backup/programs/$arch_dir
+            for tar_path in $arch_path/*.tar.xz ; do
+                tar_file="$(basename $tar_path)"
+                mv_to_backup $tar_path ~/.stack-backup/programs/$arch_dir/$tar_file
+            done
+        done
+    fi
+
+    rm -rf ~/.stack
+
+    mkdir -p ~/.stack
+    link_from_backup ~/.dot/stack-config.yaml ~/.stack/config.yaml
+    link_from_backup ~/.stack-backup/indices ~/.stack/indices
+    link_from_backup ~/.stack-backup/build-plan ~/.stack/build-plan
+    if [[ -d ~/.stack-backup/programs ]]; then
+        mkdir ~/.stack/programs
+        for arch_path in ~/.stack-backup/programs/* ; do
+            arch_dir="$(basename $arch_path)"
+            mkdir ~/.stack/programs/$arch_dir
+            for tar_path in $arch_path/*.tar.xz ; do
+                tar_file="$(basename $tar_path)"
+                link_from_backup $tar_path ~/.stack/programs/$arch_dir/$tar_file
+            done
+        done
+    fi
+}
+
+function explain_usage () {
+    echo "Usage: stack reset [OPTIONS]"
+    echo "  where OPTIONS is one of"
+    echo "    cabal: clean ~/.cabal and ~/.ghc"
+    echo "    stack: clean ~/.stack"
+    echo "    ghc: clean ~/.ghc"
+    echo "    all: clean all of the above"
+}
+
+function reset_on_arg () {
+    case $1 in
+        cabal) reset_ghc ; reset_cabal ;;
+        stack) reset_stack ;;
+        ghc) reset_ghc ;;
+        all) reset_ghc ; reset_cabal ; reset_stack ;;
+        *) explain_usage ;;
+    esac
+}
+
+reset_on_arg $1
