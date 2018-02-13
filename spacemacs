@@ -45,6 +45,7 @@ values."
      haskell
      latex
      markdown
+     octave
      python
      rust
      scala
