@@ -35,7 +35,12 @@ values."
      spell-checking
      syntax-checking
                                         ; 3 Completion
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-complete-with-key-sequence nil
+                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-private-snippets-directory nil)
      helm
                                         ; 5 Emacs
      org
