@@ -45,7 +45,9 @@ values."
                                         ; 5 Emacs
      org
                                         ; 10 Programming and markup languages
-     c-c++
+     (c-c++ :variables
+            c-c++-enable-clang-support t
+            c-c++-default-mode-for-headers 'c++-mode)
      emacs-lisp
      haskell
      latex
