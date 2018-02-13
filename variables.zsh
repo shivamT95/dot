@@ -5,9 +5,10 @@ path=("$HOME/.local/bin" $path)
 # path=('/usr/lib/smlnj/bin' $path)
 
 if (( $+commands[emacs] )); then
-    export EDITOR='emacs -nw'
-    export SUDO_EDITOR='emacs -nw'
-    export VISUAL=emacs
+    export EDITOR='emacsclient -t'
+    export ALTERNATE_EDITOR=""
+    export SUDO_EDITOR=$EDITOR
+    export VISUAL='emacsclient -c'
 elif (( $+commands[nvim] )); then
     export EDITOR=nvim
     export SUDO_EDITOR=nvim
