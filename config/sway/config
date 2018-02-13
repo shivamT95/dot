@@ -11,7 +11,7 @@ set $right l
 #
 # Applications
 set $term termite
-set $menu dmenu_run -fn "InputMono-14px"
+set $menu dmenu_run -fn "InputMono-12px"
 #set $explorer pcmanfm
 set $browser qutebrowser
 set $emacs_open_client emacsclient -c
