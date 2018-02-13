@@ -48,7 +48,6 @@ path_exists VPN {
 }
 
 path_exists Emacs {
-    # path exists when emacs daemon is active for any user
     path = "/tmp/emacs1000/server"
     format=" %title: %status "
 }
