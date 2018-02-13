@@ -10,7 +10,7 @@ set $right l
 # Your preferred terminal emulator
 set $term termite
 # Your preferred application launcher
-set $menu dmenu_run -fn "InputMono-12px"
+set $menu dmenu_run -fn "InputMono-14px"
 # Your preferred file explorer
 #set $explorer pcmanfm
 # Your preferred web browser
@@ -46,7 +46,7 @@ hide_edge_borders none
 smart_borders on
 #
 # Font
-font pango:Input Mono 12px
+font pango:Input Mono 14px
 
 ### Input configuration
 #
