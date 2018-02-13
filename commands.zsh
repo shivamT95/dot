@@ -76,8 +76,9 @@ alias co='cppoutput'
 alias cs='cppshow'
 alias cg='cppgo'
 
-[[ -n $EDITOR ]] && alias v=$EDITOR
-alias sv=sudoedit
+[[ -n $EDITOR ]] && alias e=$EDITOR
+alias se=sudoedit
+[[ -n $VISUAL ]] && alias v=$VISUAL
 
 (( $+commands[xdg-open] )) && alias o='xdg-open'
 
