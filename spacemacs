@@ -39,8 +39,8 @@ values."
                       auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-complete-with-key-sequence nil
-                      auto-completion-complete-with-key-sequence-delay 0.1
-                      auto-completion-private-snippets-directory nil)
+                      auto-completion-private-snippets-directory nil
+                      auto-completion-enable-help-tooltip 'manual)
      helm
                                         ; 5 Emacs
      org
