@@ -331,5 +331,5 @@ you should place your code here."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 ;; Nah, i'll just get rid of it all, or atleast stow it away :)
-(setq custom-file (concat "~/.dot/machines/" system-name "/custom.el"))
+(setq custom-file (concat "~/.dot/machines/" system-name "/emacs/custom.el"))
 (if (file-exists-p custom-file) (load custom-file))
