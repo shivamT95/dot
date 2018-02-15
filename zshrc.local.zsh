@@ -30,10 +30,14 @@ source ~/.dot/commands.zsh
 # Custom keybinds
 source ~/.dot/keybinds.zsh
 
+# Server aliases
+source ~/.dot/servers.zsh
+
 # grml prompt settings
 zstyle :prompt:grml:right:setup items time
 
 # Make completions use LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+# Extend config by yet another script
 [[ -f ~/.custom.zsh ]] && source ~/.custom.zsh
