@@ -57,6 +57,10 @@ for FILE in $DOTFILES ; do
     fi
 done
 
+local function zplug_install () {
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+}
+
 # Install zplug.sh
 if [[ -d ~/.zplug ]]; then 
     echo -n "~/.zplug exists. Remove and install zplug? [y/N]: "
@@ -64,6 +68,8 @@ if [[ -d ~/.zplug ]]; then
     echo
     if [[ $REPLY =~ "^[Yy]$" ]]; then
         rm -rf ~/.zplug
-        curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+        zplug_install
     fi
+else
+    zplug_install
 fi
