@@ -1,9 +1,12 @@
 [user]
 	name = Sumit Sahrawat
 	email = sumitsahrawat@outlook.com
+	signingkey = 8CA713D42039C32A
 [push]
 	default = simple
 [url "https://github.com/"]
 	insteadOf = gh:
 [url "https://aur.archlinux.org/"]
 	insteadOf = aur:
+[commit]
+	gpgsign = true
