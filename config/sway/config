@@ -32,7 +32,7 @@ output * bg ~/.dot/arch-logo-solarized.png fill
 #
 # Gaps
 gaps inner 10
-gaps outer -4
+#gaps outer -4
 smart_gaps on
 #
 # Borders
@@ -40,7 +40,7 @@ smart_gaps on
 default_border pixel
 new_float normal
 hide_edge_borders none
-smart_borders on
+#smart_borders on
 #
 # Font
 font pango:Input Mono 14px
@@ -227,8 +227,6 @@ bar {
     status_command i3status
     position top
 
-    bindsym button4 nop
-    bindsym button5 nop
     strip_workspace_numbers yes
     colors {
         separator  #dc322f
