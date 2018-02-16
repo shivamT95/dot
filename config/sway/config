@@ -43,7 +43,7 @@ hide_edge_borders none
 #smart_borders on
 #
 # Font
-font pango:Input Mono 14px
+font pango:Input Mono, FontAwesome, Ionicons, 14px
 
 ### Input configuration
 #
@@ -224,7 +224,7 @@ bindsym $mod+s mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    status_command i3status
+    status_command i3blocks
     position bottom
 
     strip_workspace_numbers yes
