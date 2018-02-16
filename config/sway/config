@@ -11,7 +11,7 @@ set $right l
 #
 # Applications
 set $term termite
-set $menu dmenu_run -fn "InputMono-12px"
+set $menu dmenu_run -b -fn "Input Mono:pixelsize=17"
 #set $explorer pcmanfm
 set $browser qutebrowser
 set $emacs_open_client emacsclient -c
@@ -32,7 +32,7 @@ output * bg ~/.dot/arch-logo-solarized.png fill
 #
 # Gaps
 gaps inner 10
-#gaps outer -4
+gaps outer 0
 smart_gaps on
 #
 # Borders
