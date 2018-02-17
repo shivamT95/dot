@@ -142,7 +142,7 @@ min_width= ■■■■■
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume-pulseaudio]
-interval=once
+interval=10
 signal=10
 
 # Date Time
