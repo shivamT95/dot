@@ -87,12 +87,12 @@ separator=true
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 # Requires 'mpstat' from package 'sysstats'.
-[cpu_usage]
+[cpu-usage]
 label=
 interval=1
 separator=false
 
-[load_average]
+[load-average]
 label=
 interval=10
 
