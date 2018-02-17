@@ -19,7 +19,7 @@ for CONFPATH in ~/.dot/config/* ; do
                 rm -rf $TARGET
             fi
         else
-            echo "Directory ~/.config/$CONF already exists. Use --replace to ignore. Exiting."
+            echo "Directory ~/.config/$CONF already exists. Use --replace to overwrite. Ignoring."
         fi
     fi
 done
@@ -34,8 +34,7 @@ for FILE in $DOTFILES ; do
         if [[ $1 == "--replace" ]]; then
             rm ~/.$NAME
         else
-            echo "File ~/.$NAME already exists. Use --replace to ignore. Exiting."
-            exit 1
+            echo "File ~/.$NAME already exists. Use --replace to overwrite. Ignoring."
         fi
     fi
 done
