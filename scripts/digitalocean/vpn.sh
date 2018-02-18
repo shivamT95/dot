@@ -17,7 +17,7 @@ if [ -n "${SERVER_IP+1}" ]; then
     apt-get update
     apt-get install -y docker-ce
 
-    docker volume --create --name $DATA
+    docker volume create --name $DATA
 
     docker run -v $DATA:/etc/openvpn \
            --rm kylemanna/openvpn ovpn_genconfig -u tcp://$SERVER:443
