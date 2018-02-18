@@ -30,38 +30,15 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(;; http://spacemacs.org/layers/LAYERS.html
-                                        ; 2 Checkers
-     spell-checking
+   '(spell-checking
      syntax-checking
-                                        ; 3 Completion
-     ;; (auto-completion :variables
-     ;;                  auto-completion-return-key-behavior nil
-     ;;                  auto-completion-tab-key-behavior 'complete
-     ;;                  auto-completion-complete-with-key-sequence nil
-     ;;                  auto-completion-private-snippets-directory nil
-     ;;                  auto-completion-enable-help-tooltip 'manual)
+     ;; auto-completion
      helm
-                                        ; 5 Emacs
-     org
-                                        ; 10 Programming and markup languages
      (c-c++ :variables
             c-c++-enable-clang-support t
             c-c++-default-mode-for-headers 'c++-mode)
-     emacs-lisp
-     haskell
-     latex
-     markdown
-     octave
-     python
-     rust
-     scala
-     shell-scripts
-     yaml
-                                        ; 14 Source control
      git
      github
-                                        ; 18 Tools
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
