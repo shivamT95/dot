@@ -14,6 +14,7 @@ set $term termite
 set $menu dmenu_run -b -fn "Input Mono:pixelsize=17"
 #set $explorer pcmanfm
 set $browser qutebrowser
+set $incognito qutebrowser ":open -p"
 set $emacs_open_client emacsclient -c
 set $emacs_kill_daemon emacsclient -e '(save-buffers-kill-emacs)'
 set $grabscreen swaygrab
@@ -81,6 +82,7 @@ font pango:Input Mono, FontAwesome, Ionicons, 14px
 
     # web browser
     bindsym $mod+quoteright exec $browser
+    bindsym $mod+Shift+quoteright exec $incognito
 
     # text editor
     bindsym $mod+semicolon exec $emacs_open_client
