@@ -2,20 +2,11 @@
 
 alias q=exit # very useful in emacs terminal
 
-(( $+commands[ghcjs] )) && alias ghcjsi='ghcjs --interactive'
-
-if (( $+commands[mpv] )); then
-    alias m='mpv'
-    alias ms='mpv --shuffle'
-    alias ma='mpv --no-resume-playback --no-video'
-    alias mas='mpv --no-resume-playback --no-video --shuffle'
-fi
+(( $+commands[ghcjs] )) && (( ! $+commands[ghcjsi] )) && alias ghcjsi='ghcjs --interactive'
 
 (( $+commands[youtube-dl] )) && alias ydl='youtube-dl'
 
 alias dl='curl -C - -L -O'
-
-# alias rmlsc='rm -i "$(ls ~/Pictures/Screenshot* | tail -n 1)"'
 
 # coding competitions
 function cpprun () {
