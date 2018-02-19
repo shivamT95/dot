@@ -43,8 +43,8 @@ interval= 3600
 # OpenVPN
 #
 # Indicates if OpenVPN is connected.
-[openvpn]
-interval=5
+# [openvpn]
+# interval=5
 
 # Hotspot
 #
