@@ -87,7 +87,7 @@ alias se=sudoedit
 function do-ssh () {
     if (( ! $+DROPLET )); then
         echo 'Set $DROPLET to use this command'
-        exit 1
+        return 1
     fi
 
     if [[ $TERM =~ '^xterm.*$' ]]; then
