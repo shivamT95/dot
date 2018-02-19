@@ -4,6 +4,9 @@ path=("$HOME/.dot/bin" $path)
 path=("$HOME/.local/bin" $path)
 # path=('/usr/lib/smlnj/bin' $path)
 
+export WLC_REPEAT_DELAY=300
+export WLC_REPEAT_RATE=30
+
 if (( $+commands[emacs] )); then
     export EDITOR='emacsclient -t'
     export ALTERNATE_EDITOR=""

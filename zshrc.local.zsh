@@ -24,9 +24,6 @@ fi
 # Tell zplug we're done
 zplug load
 
-# Custom env variables
-source ~/.dot/variables.zsh
-
 # Custom commands
 source ~/.dot/commands.zsh
 
