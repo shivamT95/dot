@@ -84,16 +84,16 @@ alias se=sudoedit
 (( $+commands[xdg-open] )) && alias o='xdg-open'
 
 # ssh into digitalocean droplets
-function droplet () {
-    if (( $+DROPLET )); then
-        if [[ $TERM =~ '^xterm.*$' ]]; then
-            env TERM=xterm ssh root@${DROPLET}
-        else
-            ssh root@${DROPLET}
-        fi
-    else
+function do-ssh () {
+    if (( ! $+DROPLET )); then
         echo 'Set $DROPLET to use this command'
         exit 1
+    fi
+
+    if [[ $TERM =~ '^xterm.*$' ]]; then
+        env TERM=xterm ssh root@${DROPLET}
+    else
+        ssh root@${DROPLET}
     fi
 }
 
