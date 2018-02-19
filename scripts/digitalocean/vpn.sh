@@ -6,6 +6,7 @@
 if [ -n "${SERVER_IP+1}" ]; then
     DATA="${OVPN_DATA:-ovpn-data}"
     CLIENT="${CLIENT_NAME:-client}"
+    PORT="${SERVER_PORT:-1194}"
     SERVER=$SERVER_IP
 
     apt-get update
@@ -20,13 +21,13 @@ if [ -n "${SERVER_IP+1}" ]; then
     docker volume create --name $DATA
 
     docker run -v $DATA:/etc/openvpn \
-           --rm kylemanna/openvpn ovpn_genconfig -u tcp://$SERVER:443
+           --rm kylemanna/openvpn ovpn_genconfig -u tcp://$SERVER:$PORT
 
     docker run -v $DATA:/etc/openvpn \
            --rm -it kylemanna/openvpn ovpn_initpki
 
     docker run -v $DATA:/etc/openvpn \
-           -d -p 443:1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn
+           -d -p $PORT:1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn
 
     docker run -v $DATA:/etc/openvpn \
            --rm -it kylemanna/openvpn easyrsa build-client-full $CLIENT nopass
