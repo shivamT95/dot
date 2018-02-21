@@ -25,7 +25,7 @@ for CONFPATH in ~/.dot/config/* ; do
 done
 
 # create link from ~/.dot/$file at ~/.$file (strip .zsh$)
-DOTFILES=(spacemacs gitconfig zshrc.zsh 'zshrc.local.zsh' zsh-dircolors.config zlogin.zsh)
+DOTFILES=(spacemacs gitconfig 'zshrc.local.zsh' zsh-dircolors.config zlogin.zsh)
 
 # Check DOTFILES
 for FILE in $DOTFILES ; do

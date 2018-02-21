@@ -1,1 +1,0 @@
-grml/etc/zsh/zshrc
