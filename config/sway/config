@@ -11,6 +11,7 @@ set $right l
 #
 # Applications
 set $term termite
+set $videos mpv --fs --shuffle --sub=no ~/.videos
 set $menu dmenu_run -b -fn "Input Mono:pixelsize=17"
 #set $explorer pcmanfm
 set $browser qutebrowser
@@ -74,6 +75,9 @@ font pango:Input Mono, FontAwesome, Ionicons, 14px
     # start a terminal
     bindsym $mod+Return exec $term
 
+    # shuffle through videos (symlink video directory at ~/.videos)
+    bindsym $mod+Shift+Return exec $videos
+    
     # start your launcher
     bindsym $mod+p exec $menu
 
