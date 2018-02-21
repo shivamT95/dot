@@ -41,15 +41,15 @@ This function should only modify configuration layer settings."
      git
      github
      helm
+     (latex :variables
+            latex-enable-auto-fill t)
      markdown
-     neotree
      python
      spell-checking
      syntax-checking
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom)
-     )
+            shell-default-position 'bottom))
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -435,7 +435,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  )
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
