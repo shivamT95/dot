@@ -1,0 +1,3 @@
+#! /usr/bin/env zsh
+
+(( $+TOUCHPAD_ID )) && xinput --disable $TOUCHPAD_ID

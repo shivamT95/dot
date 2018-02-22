@@ -25,7 +25,7 @@ set $lockscreen swaylock
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 set $wallpaper ~/.dot/arch-logo-solarized.png
-exec xwallpaper --zoom $wallpaper
+exec --no-startup-id xwallpaper --zoom $wallpaper
 #
 # Example configuration:
 #
@@ -61,6 +61,10 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+# toggle touchpad
+exec --no-startup-id touchpad-disable
+bindsym $mod+m exec touchpad-disable
+bindsym $mod+Shift+m exec touchpad-enable
 
 ### Key bindings
 #
@@ -104,7 +108,10 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     floating_modifier $mod
 
     # reload the configuration file
-    bindsym $mod+Shift+r reload
+    bindsym $mod+0 reload
+
+    # restart i3 inplace
+    bindsym $mod+Shift+r restart
 
     # exit sway (logs you out of your wayland session)
     bindsym $mod+Shift+e exit
@@ -135,7 +142,6 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
     bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
     # move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2
@@ -146,12 +152,11 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
     bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
     # alternate between workspaces
     bindsym $mod+Tab workspace back_and_forth
     workspace_auto_back_and_forth no
     # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+    # We just use 1-9 as the default.
 #
 # Layout stuff:
 #
