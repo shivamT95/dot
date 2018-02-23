@@ -1,0 +1,3 @@
+#! /usr/bin/env zsh
+
+i3blocks-contrib/bandwidth/bandwidth -i ' ' -o ' '
