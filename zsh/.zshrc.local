@@ -1,8 +1,5 @@
 #! /usr/bin/env zsh
 
-# Read env variables
-source ~/.zsh/variables.zsh
-
 # Extend config by yet another script
 [[ -f ~/.custom.before.zsh ]] && source ~/.custom.before.zsh
 
@@ -27,6 +24,9 @@ fi
 # Tell zplug we're done
 zplug load
 
+# Read env variables
+source ~/.zsh/variables.zsh
+
 # Custom commands
 source ~/.zsh/commands.zsh
 
@@ -41,5 +41,3 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Extend config by yet another script
 [[ -f ~/.custom.after.zsh ]] && source ~/.custom.after.zsh
-#! /usr/bin/env sh
-
