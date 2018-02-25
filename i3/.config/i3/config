@@ -1,123 +1,120 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
+#
 set $mod Mod4
 #
 # Home row direction keys, like vim
+#
 set $left h
 set $down j
 set $up k
 set $right l
 #
 # Applications
-set $term termite
-set $videos mpv --fs --shuffle --sub=no ~/.videos
-set $menu dmenu_run -b -fn "Noto Mono:pixelsize=17"
-set $explorer xfce4-terminal --drop-down -x ranger
+#
+set $term xfce4-terminal
+set $guake xfce4-terminal --drop-down
+set $videos mpv --fs --shuffle --sub=no ~/videos
+set $launcher xfce4-appfinder --collapsed
+set $appfinder xfce4-appfinder
+set $explorer xfce4-terminal --drop-down -e ranger
 set $browser qutebrowser
 set $incognito qutebrowser ":open -p"
-set $emacs_open_client emacsclient -c
-set $emacs_kill_daemon emacsclient -e '(save-buffers-kill-emacs)'
-set $grabscreen swaygrab
-set $lockscreen swaylock
+set $alt-browser firefox
+set $emacs-open-client emacsclient -c
+set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
+set $grabscreen xfce4-screenshooter -f
+set $screenshot xfce4-screenshooter
+set $settings-manager xfce4-settings-manager
+set $settings-editor xfce4-settings-editor
+set $taskmanager xfce4-taskmanager
+set $lockscreen xflock4
 
 ### Output configuration
 #
-# Default wallpaper
-set $wallpaper ~/.wallpapers/arch-logo-solarized.png
-exec --no-startup-id xwallpaper --zoom $wallpaper
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-#
 # Gaps
-gaps inner 10
-gaps outer 0
+#
+gaps inner 5
+gaps outer 5
 smart_gaps on
 #
 # Borders
 #
 new_window pixel
-new_float normal
+new_float pixel
 hide_edge_borders none
 #smart_borders on
 #
+# Popups
+#
+popup_during_fullscreen smart
+#
 # Font
+#
 font pango:Noto Mono, FontAwesome, Ionicons, 14px
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-# toggle touchpad
-exec --no-startup-id touchpad-disable
-bindsym $mod+m exec touchpad-disable
-bindsym $mod+Shift+m exec touchpad-enable
 
 ### Key bindings
 #
 # Power:
 #
     bindsym $mod+z exec $lockscreen
-    bindsym $mod+Shift+z exec $lockscreen && systemctl suspend
+    bindsym $mod+t exec $taskmanager
+    bindsym $mod+Control+Shift+z exec systemctl suspend
     bindsym $mod+Control+Shift+r exec systemctl reboot
     bindsym $mod+Control+Shift+e exec systemctl poweroff
 #
 # Basics:
 #
-    # start a terminal
+    # new terminal window
     bindsym $mod+Return exec $term
 
-    # shuffle through videos (symlink video directory at ~/.videos)
-    bindsym $mod+Shift+Return exec $videos
+    # quake style terminal panel
+    bindsym $mod+Shift+Return exec $guake
+
+    # shuffle through videos
+    bindsym $mod+0 exec $videos
     
-    # start your launcher
-    bindsym $mod+p exec $menu
- 
+    # application launcher
+    bindsym $mod+p exec $launcher
+    bindsym $mod+Shift+p exec $appfinder
+
     # file explorer
     bindsym $mod+e exec $explorer
-
-    # kill focused window
-    bindsym $mod+w kill
 
     # web browser
     bindsym $mod+quoteright exec $browser
     bindsym $mod+Shift+quoteright exec $incognito
+    bindsym $mod+Control+quoteright exec $alt-browser
 
     # text editor
-    bindsym $mod+semicolon exec $emacs_open_client
-    bindsym $mod+Shift+semicolon exec $emacs_kill_daemon
+    bindsym $mod+semicolon exec $emacs-open-client
+    bindsym $mod+Shift+semicolon exec $emacs-kill-daemon
 
     # screenshot
-    bindsym Print exec $grabscreen
+    bindsym Print exec $grabscreen # fullscreen without mouse
+    bindsym $mod+Print exec $screenshot
+
+    # settings
+    bindsym $mod+quoteleft exec $settings-manager
+    bindsym $mod+Shift+quoteleft exec $settings-editor
+
+    # kill focused window
+    bindsym $mod+w kill
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod
 
     # reload the configuration file
-    bindsym $mod+0 reload
+    bindsym $mod+r reload
 
     # restart i3 inplace
     bindsym $mod+Shift+r restart
 
-    # exit sway (logs you out of your wayland session)
-    bindsym $mod+Shift+e exit
+    # exit i3 (logs you out of your session)
+    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 #
 # Moving around:
 #
@@ -145,6 +142,7 @@ bindsym $mod+Shift+m exec touchpad-enable
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
     bindsym $mod+9 workspace 9
+
     # move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2
@@ -155,6 +153,7 @@ bindsym $mod+Shift+m exec touchpad-enable
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
     bindsym $mod+Shift+9 move container to workspace 9
+
     # alternate between workspaces
     bindsym $mod+Tab workspace back_and_forth
     workspace_auto_back_and_forth no
@@ -194,13 +193,13 @@ bindsym $mod+Shift+m exec touchpad-enable
 #
 # Special keys:
 #
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
-bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
+    bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pkill -RTMIN+1 i3blocks
+    bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pkill -RTMIN+1 i3blocks
+    bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+1 i3blocks
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # i3 has a "scratchpad", which is a bag for holding windows.
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
@@ -237,7 +236,6 @@ bindsym $mod+s mode "resize"
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
 bar {
     status_command i3blocks
     position bottom
@@ -257,10 +255,10 @@ bar {
 }
 
 # hide/unhide status bar
-#bindsym $mod+m bar mode toggle
+bindsym $mod+m bar mode toggle
 
 # Theme colors
-# class                   border  backgr. text    indic.   child_border
+# class                 border  backgr. text    indic.   child_border
   client.focused          #859900 #859900 #fdf6e3 #6c71c4
   client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
   client.unfocused        #073642 #073642 #93a1a1 #586e75
@@ -268,3 +266,11 @@ bar {
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B
+
+#
+# rules to float/tile/position windows
+#
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-settings-manager"] floating enable
+for_window [class="Xfce4-settings-editor"] floating enable
+for_window [class="Xfce4-taskmanager"] floating enable

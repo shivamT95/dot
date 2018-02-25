@@ -17,7 +17,7 @@ MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 ScrollingLines=999999
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-BackgroundDarkness=0.950000
+BackgroundDarkness=0.980000
 ScrollingOnOutput=FALSE
 MiscBellUrgent=FALSE
 MiscMouseWheelZoom=TRUE
@@ -37,6 +37,6 @@ ColorBoldUseDefault=FALSE
 ColorPalette=#073642;#dc322f;#859900;#b58900;#268bd2;#d33682;#2aa198;#eee8d5;#002b36;#cb4b16;#586e75;#657b83;#839496;#6c71c4;#93a1a1;#fdf6e3
 TabActivityColor=#dc322f
 ShortcutsNoMnemonics=TRUE
-FontName=Terminus (TTF) Medium 14
+FontName=Noto Mono 11
 DropdownKeepOpenDefault=TRUE
 
