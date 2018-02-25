@@ -275,7 +275,7 @@ global:
   fonts.monospace: Noto Mono
   fonts.prompts: 12pxt sans-serif
   fonts.statusbar: 12px monospace
-  fonts.tabs: 14px monospace
+  fonts.tabs: 12px monospace
   fonts.web.family.fixed: null
   fonts.web.family.standard: null
   hints.border: '1px solid #ffffff'
