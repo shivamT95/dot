@@ -292,3 +292,4 @@ for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Xfce4-settings-manager"] floating enable
 for_window [class="Xfce4-settings-editor"] floating enable
 for_window [class="Xfce4-taskmanager"] floating enable
+for_window [class="Variety"] floating enable

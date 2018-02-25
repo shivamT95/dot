@@ -22,3 +22,7 @@
 
 # Assuming i3 using xwallpaper to change wallpaper
 xwallpaper --zoom $1
+
+# Show notification for automatic wallpaper changes
+name=$(echo $3 | sed 's/\//\n/g' | tail -n 1)
+[[ $2 == 'auto' ]] || notify-send --icon $1 "Wallpaper changed" $name
