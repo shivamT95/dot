@@ -34,6 +34,9 @@ set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
 set $grabscreen xfce4-screenshooter -f
 set $screenshot xfce4-screenshooter
 
+set $wallpaper-next variety -n
+set $wallpaper-prev variety -p
+
 set $settings-manager xfce4-settings-manager
 set $settings-editor xfce4-settings-editor
 
@@ -107,6 +110,10 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     # screenshot
     bindsym Print exec $grabscreen # fullscreen without mouse
     bindsym $mod+Print exec $screenshot
+
+    # wallpapers
+    bindsym $mod+Shift+period exec --no-startup-id $wallpaper-next
+    bindsym $mod+Shift+comma exec --no-startup-id $wallpaper-prev
 
     # settings
     bindsym $mod+quoteleft exec $settings-manager
