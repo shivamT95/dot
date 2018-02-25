@@ -15,20 +15,30 @@ set $right l
 #
 set $term xfce4-terminal
 set $guake xfce4-terminal --drop-down
+
+set $music xfce4-terminal --drop-down -e mocp
 set $videos mpv --fs --shuffle --sub=no ~/videos
+
 set $launcher xfce4-appfinder --collapsed
 set $appfinder xfce4-appfinder
+
 set $explorer xfce4-terminal --drop-down -e ranger
+
 set $browser qutebrowser
 set $incognito qutebrowser ":open -p"
 set $alt-browser firefox
+
 set $emacs-open-client emacsclient -c
 set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
+
 set $grabscreen xfce4-screenshooter -f
 set $screenshot xfce4-screenshooter
+
 set $settings-manager xfce4-settings-manager
 set $settings-editor xfce4-settings-editor
+
 set $taskmanager xfce4-taskmanager
+
 set $lockscreen xflock4
 
 ### Output configuration
@@ -71,6 +81,9 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
 
     # quake style terminal panel
     bindsym $mod+Shift+Return exec $guake
+
+    # play some music
+    bindsym $mod+9 exec $music
 
     # shuffle through videos
     bindsym $mod+0 exec $videos
@@ -141,7 +154,6 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+6 workspace 6
     bindsym $mod+7 workspace 7
     bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
 
     # move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
@@ -152,13 +164,12 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+Shift+6 move container to workspace 6
     bindsym $mod+Shift+7 move container to workspace 7
     bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
 
     # alternate between workspaces
+    workspace_auto_back_and_forth yes
     bindsym $mod+Tab workspace back_and_forth
-    workspace_auto_back_and_forth no
     # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-9 as the default.
+    # We just use 1-8 as the default.
 #
 # Layout stuff:
 #
