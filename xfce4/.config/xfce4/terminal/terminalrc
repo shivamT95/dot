@@ -39,4 +39,6 @@ TabActivityColor=#dc322f
 ShortcutsNoMnemonics=TRUE
 FontName=Noto Mono 11
 DropdownKeepOpenDefault=TRUE
+DropdownOpacity=98
+DropdownPosition=40
 
