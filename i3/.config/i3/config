@@ -13,7 +13,7 @@ set $right l
 set $term termite
 set $videos mpv --fs --shuffle --sub=no ~/.videos
 set $menu dmenu_run -b -fn "Noto Mono:pixelsize=17"
-#set $explorer pcmanfm
+set $explorer xfce4-terminal --drop-down -x ranger
 set $browser qutebrowser
 set $incognito qutebrowser ":open -p"
 set $emacs_open_client emacsclient -c
@@ -85,6 +85,9 @@ bindsym $mod+Shift+m exec touchpad-enable
     
     # start your launcher
     bindsym $mod+p exec $menu
+ 
+    # file explorer
+    bindsym $mod+e exec $explorer
 
     # kill focused window
     bindsym $mod+w kill
