@@ -1,4 +1,4 @@
 #! /usr/bin/env zsh
 
-i3blocks-contrib/arch-update/arch-update.py \
+~/.i3blocks-scripts/i3blocks-contrib/arch-update/arch-update.py \
     -a -b "#5fff5f" -u "#FFFF85" -w "^linux.*" "^pacman.*"
