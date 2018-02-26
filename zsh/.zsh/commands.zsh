@@ -81,11 +81,7 @@ function do-ssh () {
         return 1
     fi
 
-    if [[ $TERM =~ '^xterm.*$' ]]; then
-        env TERM=xterm ssh root@${DROPLET}
-    else
-        ssh root@${DROPLET}
-    fi
+    ssh root@${DROPLET}
 }
 
 # restart and check status
