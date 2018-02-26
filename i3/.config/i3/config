@@ -287,11 +287,24 @@ bindsym $mod+m bar mode toggle
 
   client.background       #2B2C2B
 
-#
-# rules to float/tile/position windows
+### rules to float/tile/position windows
 #
 for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Xfce4-settings-manager"] floating enable
 for_window [class="Xfce4-settings-editor"] floating enable
 for_window [class="Xfce4-taskmanager"] floating enable
 for_window [class="Variety"] floating enable
+#
+# steam
+#
+# https://github.com/z3ntu/dotfiles/blob/master/i3/.config/i3/config#L55
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
