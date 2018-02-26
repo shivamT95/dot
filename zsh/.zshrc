@@ -6,8 +6,14 @@
 # Add custom completions
 fpath=(~/.zsh/completions $fpath)
 
+# Ensure that zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+    echo 'Trying to install zplug using ~/.bin/zplug-install'
+    ~/.bin/zplug-install || return 1
+fi
+
 # Load zplug
-[[ -d ~/.zplug ]] && source ~/.zplug/init.zsh
+source ~/.zplug/init.zsh
 
 # Editing settings
 autoload -U select-word-style
