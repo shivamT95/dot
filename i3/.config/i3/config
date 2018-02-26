@@ -28,8 +28,9 @@ set $browser qutebrowser
 set $incognito qutebrowser ":open -p"
 set $alt-browser firefox
 
-set $emacs-open-client emacsclient -c
-set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
+set $editor gvim
+#set $emacs-open-client emacsclient -c
+#set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
 
 set $grabscreen xfce4-screenshooter -f
 set $screenshot xfce4-screenshooter
@@ -104,8 +105,9 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+Control+quoteright exec $alt-browser
 
     # text editor
-    bindsym $mod+semicolon exec $emacs-open-client
-    bindsym $mod+Shift+semicolon exec $emacs-kill-daemon
+    bindsym $mod+semicolon exec $editor
+#   bindsym $mod+semicolon exec $emacs-open-client
+#   bindsym $mod+Shift+semicolon exec $emacs-kill-daemon
 
     # screenshot
     bindsym Print exec $grabscreen # fullscreen without mouse
