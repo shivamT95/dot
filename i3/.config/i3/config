@@ -17,7 +17,7 @@ set $term xfce4-terminal
 set $guake xfce4-terminal --drop-down
 
 set $music xfce4-terminal --drop-down -e mocp
-set $videos mpv --fs --shuffle --sub=no ~/videos
+set $videos mpv --shuffle --sub=no ~/videos
 
 set $launcher xfce4-appfinder --collapsed
 set $appfinder xfce4-appfinder
@@ -124,6 +124,9 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     # kill focused window
     bindsym $mod+w kill
 
+    # kill window using mouse pointer
+    bindsym $mod+Shift+w exec xkill
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -216,6 +219,8 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pkill -RTMIN+1 i3blocks
     bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pkill -RTMIN+1 i3blocks
     bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+1 i3blocks
+    # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+    # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 #
 # Scratchpad:
 #
