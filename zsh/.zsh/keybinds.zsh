@@ -15,3 +15,7 @@ bindkey '\el' _magic-alt-l
 
 # open ranger
 #bindkey '\er' exec ranger
+
+# command history substring search
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
