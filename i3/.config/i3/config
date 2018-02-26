@@ -49,8 +49,8 @@ set $lockscreen xflock4
 #
 # Gaps
 #
-gaps inner 5
-gaps outer 5
+gaps inner 10
+gaps outer 0
 smart_gaps on
 #
 # Borders
