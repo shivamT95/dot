@@ -62,6 +62,7 @@ hide_edge_borders none
 # Popups
 #
 popup_during_fullscreen smart
+bindsym button2 nop
 #
 # Focus follows mouse
 #
