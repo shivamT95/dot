@@ -1,6 +1,6 @@
 [Configuration]
 MiscAlwaysShowTabs=FALSE
-MiscBell=FALSE
+MiscBell=TRUE
 MiscBordersDefault=TRUE
 MiscCursorBlinks=FALSE
 MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
@@ -19,9 +19,9 @@ ScrollingLines=999999
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
 BackgroundDarkness=0.980000
 ScrollingOnOutput=FALSE
-MiscBellUrgent=FALSE
+MiscBellUrgent=TRUE
 MiscMouseWheelZoom=TRUE
-MiscMiddleClickOpensUri=FALSE
+MiscMiddleClickOpensUri=TRUE
 MiscCopyOnSelect=TRUE
 MiscDefaultWorkingDir=
 MiscRewrapOnResize=TRUE
@@ -41,4 +41,5 @@ FontName=Inconsolata 13.0
 DropdownKeepOpenDefault=TRUE
 DropdownOpacity=98
 DropdownPosition=40
+MiscNewTabAdjacent=TRUE
 
