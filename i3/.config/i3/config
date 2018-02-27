@@ -63,6 +63,10 @@ hide_edge_borders none
 #
 popup_during_fullscreen smart
 #
+# Focus follows mouse
+#
+focus_follows_mouse no
+#
 # Font
 #
 font pango:Noto Mono, FontAwesome, Ionicons, 14px
