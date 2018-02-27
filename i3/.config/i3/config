@@ -97,7 +97,7 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     
     # application launcher
     bindsym $mod+p exec $launcher
-    bindsym $mod+Shift+p exec $appfinder
+    bindsym $mod+o exec $appfinder
 
     # file explorer
     bindsym $mod+e exec $explorer
