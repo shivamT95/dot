@@ -186,8 +186,8 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     # You can "split" the current object of your focus with
     # $mod+i or $mod+n, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+i split h; exec notify-send 'tiling horizontally'
-    bindsym $mod+n split v; exec notify-send 'tiling vertically'
+    bindsym $mod+i split h
+    bindsym $mod+n split v
 
     # Switch the current container between different layout styles
     bindsym $mod+comma layout stacking
