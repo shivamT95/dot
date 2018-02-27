@@ -42,4 +42,6 @@ DropdownKeepOpenDefault=TRUE
 DropdownOpacity=98
 DropdownPosition=40
 MiscNewTabAdjacent=TRUE
+ShortcutsNoHelpkey=TRUE
+ShortcutsNoMenukey=TRUE
 
