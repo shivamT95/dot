@@ -1,11 +1,16 @@
 #! /usr/bin/env bash
 
+# Setup script to turn an ubuntu droplet into an openvpn server.
+# Configurable with env variables:
+#   SERVER_IP: ip address/domain name of the droplet (required to create .ovpn file)
+#   SERVER_PORT: port for the openvpn server (default 1194)
+
 # https://github.com/kylemanna/docker-openvpn
 # https://docs.docker.com/install/linux/docker-ce/ubuntu
 
 if [ -n "${SERVER_IP+1}" ]; then
-    DATA="${OVPN_DATA:-ovpn-data}"
-    CLIENT="${CLIENT_NAME:-client}"
+    DATA=ovpn-data
+    CLIENT=droplet
     PORT="${SERVER_PORT:-1194}"
     SERVER=$SERVER_IP
 
