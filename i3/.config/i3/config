@@ -300,11 +300,11 @@ for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Xfce4-settings-manager"] floating enable
 for_window [class="Xfce4-settings-editor"] floating enable
 for_window [class="Xfce4-taskmanager"] floating enable
+for_window [class="Nvidia-settings"] floating enable
 for_window [class="Variety"] floating enable
 #
-# steam
+# steam (https://github.com/z3ntu/dotfiles/blob/master/i3/.config/i3/config#L55)
 #
-# https://github.com/z3ntu/dotfiles/blob/master/i3/.config/i3/config#L55
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
