@@ -24,7 +24,7 @@
 (gtk_accel_path "<Actions>/terminal-window/help-menu" "")
 (gtk_accel_path "<Actions>/terminal-window/move-tab-left" "<Primary><Shift>h")
 (gtk_accel_path "<Actions>/terminal-window/move-tab-right" "<Primary><Shift>l")
-(gtk_accel_path "<Actions>/terminal-window/new-tab" "<Primary><Shift>t")
+(gtk_accel_path "<Actions>/terminal-window/new-tab" "<Primary><Shift>i")
 (gtk_accel_path "<Actions>/terminal-window/new-window" "")
 (gtk_accel_path "<Actions>/terminal-window/next-tab" "<Primary><Shift>j")
 (gtk_accel_path "<Actions>/terminal-window/paste" "<Primary><Shift>v")
