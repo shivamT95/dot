@@ -260,5 +260,5 @@ bar {
 
   client.background       #2B2C2B
 
-include ~/.machines/`hostname`/sway/*
+include ~/.config/sway/sway.conf.d/*
 include /etc/sway/config.d/*
