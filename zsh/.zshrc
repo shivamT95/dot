@@ -1,7 +1,9 @@
 #! /usr/bin/env zsh
 
 # Extend config by yet another script
-[[ -f ~/.custom.before.zsh ]] && source ~/.custom.before.zsh
+if [[ -f ~/.custom.before.zsh ]]; then
+    source ~/.custom.before.zsh
+fi
 
 # Add custom completions
 fpath=(~/.zsh/completions $fpath)
@@ -46,4 +48,6 @@ zstyle :prompt:grml:right:setup items time
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Extend config by yet another script
-[[ -f ~/.custom.after.zsh ]] && source ~/.custom.after.zsh
+if [[ -f ~/.custom.after.zsh ]]; then
+    source ~/.custom.after.zsh
+fi
