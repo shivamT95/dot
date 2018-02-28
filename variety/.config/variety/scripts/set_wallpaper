@@ -1,4 +1,4 @@
-#! /usr/bin/env zsh
+#!/bin/bash
 #
 # This script is run by Variety when a new wallpaper is set.
 # You can use bash, python or whatever suits you for the script.
@@ -20,9 +20,19 @@
 # echo "$2" # auto
 # echo "$3" # /home/username/Pictures/Wallpapers/Nature/green-tunnel-1920x1080-wallpaper-861.jpg
 
-# Assuming i3 using xwallpaper to change wallpaper
-xwallpaper --zoom $1
 
-# Show notification for automatic wallpaper changes
-name=$(echo $3 | sed 's/\//\n/g' | tail -n 1)
-[[ $2 == 'auto' ]] || notify-send --icon $1 "Wallpaper changed" $name
+# Here you may apply some additional custom operations on the wallpaper before
+# it is applied. In the end put the path to the actual final wallpaper image
+# file in the WP variable. The default is to simply set WP=$1.
+WP=$1
+
+# set wallpaper
+xwallpaper --zoom $WP
+
+# for get_wallpaper script
+ln -sf ~/.wallpaper $WP
+
+# Show a notification on wallpaper change. Display the original filename, but
+# the post-effects image.
+name=$(echo "$3" | sed 's/\//\n/g'| tail -n 1)
+notify-send --icon "$WP" "Wallpaper changed" "$name"
