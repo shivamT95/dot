@@ -4,4 +4,4 @@
 # Its purpose is to obtain the current wallpaper as an absolute path, or file URI (e.g. file://a/b.jpg)
 # This is needed by Variety at start to ensure History->Back works OK to revert back to the pre-Variety wallpaper.
 
-readlink ~/.wallpaper
+cat ~/.wallpaper
