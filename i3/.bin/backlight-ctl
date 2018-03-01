@@ -1,0 +1,18 @@
+#! /usr/bin/env zsh
+
+if [[ $# != 2 ]]; then
+    echo "Usage: $0 <up|down> <delta>"
+    exit 1
+fi
+
+case $1 in
+    up) xbacklight -inc $2 ;;
+    down) xbacklight -dec $2 ;;
+    *) exit 1 ;;
+esac
+
+perc=$(printf '%.0f' $(xbacklight -get))
+indicator=notification-display-brightness
+hint=string:x-canonical-private-synchronous:brightness
+
+notify-send $perc -i $indicator -h int:value:$perc -h $hint

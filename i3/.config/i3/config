@@ -1,3 +1,5 @@
+# i3 config file (v4)
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -11,13 +13,14 @@ set $down j
 set $up k
 set $right l
 #
-# Applications
+# Applications:
 #
 set $term xfce4-terminal
 set $guake xfce4-terminal --drop-down
 
 set $music xfce4-terminal --drop-down -e mocp
-set $videos mpv --shuffle --sub=no ~/videos
+set $videos-win mpv --shuffle --sub=no ~/videos
+set $videos-fs mpv --fullscreen --shuffle --sub=no ~/videos
 
 set $launcher xfce4-appfinder --collapsed
 set $appfinder xfce4-appfinder
@@ -34,41 +37,48 @@ set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
 set $grabscreen xfce4-screenshooter -f
 set $screenshot xfce4-screenshooter
 
-set $wallpaper-next variety -n
-set $wallpaper-prev variety -p
+set $wallpaper-next variety --next
+set $wallpaper-prev variety --previous
+set $wallpaper-toggle variety --toggle-pause
 
 set $settings-manager xfce4-settings-manager
 set $settings-editor xfce4-settings-editor
 
 set $taskmanager xfce4-taskmanager
 
-set $lockscreen xflock4
+set $lockscreen dm-tool lock
+set $power-dialogue xfce4-session-logout
+
+set $logout xfce4-session-logout --logout
+set $suspend xfce4-session-logout --suspend
+set $reboot xfce4-session-logout --reboot
+set $shutdown xfce4-session-logout --halt
 
 ### Output configuration
 #
-# Gaps
+# Gaps:
 #
 gaps inner 10
 gaps outer 0
 smart_gaps on
 #
-# Borders
+# Borders:
 #
 new_window pixel
 new_float pixel
 hide_edge_borders none
 #smart_borders on
 #
-# Popups
+# Popups:
 #
 popup_during_fullscreen smart
 bindsym button2 nop
 #
-# Focus follows mouse
+# Mouse:
 #
 focus_follows_mouse no
 #
-# Font
+# Fonts:
 #
 font pango:Noto Mono, FontAwesome, Ionicons, 14px
 
@@ -76,11 +86,23 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
 #
 # Power:
 #
+    # lock
     bindsym $mod+z exec $lockscreen
-    bindsym $mod+t exec $taskmanager
-    bindsym $mod+Control+Shift+z exec systemctl suspend
-    bindsym $mod+Control+Shift+r exec systemctl reboot
-    bindsym $mod+Control+Shift+e exec systemctl poweroff
+
+    # reload the configuration file
+    bindsym $mod+r reload
+
+    # restart i3 inplace
+    bindsym $mod+Shift+r restart
+
+    # dialog (logout, restart, shutdown, suspend, hibernate)
+    bindsym $mod+Shift+e exec $power-dialogue
+
+    # direct power keys
+    bindsym $mod+Control+Shift+w exec $logout
+    bindsym $mod+Control+Shift+z exec $suspend
+    bindsym $mod+Control+Shift+r exec $reboot
+    bindsym $mod+Control+Shift+e exec $shutdown
 #
 # Basics:
 #
@@ -94,7 +116,8 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+9 exec $music
 
     # shuffle through videos
-    bindsym $mod+0 exec $videos
+    bindsym $mod+0 exec $videos-win
+    bindsym $mod+Shift+0 exec $videos-fs
     
     # application launcher
     bindsym $mod+p exec $launcher
@@ -119,10 +142,17 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     # wallpapers
     bindsym $mod+Shift+period exec --no-startup-id $wallpaper-next
     bindsym $mod+Shift+comma exec --no-startup-id $wallpaper-prev
+    bindsym $mod+Shift+slash exec --no-startup-id $wallpaper-toggle
 
     # settings
     bindsym $mod+quoteleft exec $settings-manager
     bindsym $mod+Shift+quoteleft exec $settings-editor
+
+    # task manager
+    bindsym $mod+g exec $taskmanager
+
+    # restart dunst
+    bindsym $mod+Shift+d exec systemctl --user restart dunst && notify-send 'dunst restarted'
 
     # kill focused window
     bindsym $mod+w kill
@@ -134,15 +164,6 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
     floating_modifier $mod
-
-    # reload the configuration file
-    bindsym $mod+r reload
-
-    # restart i3 inplace
-    bindsym $mod+Shift+r restart
-
-    # exit i3 (logs you out of your session)
-    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 #
 # Moving around:
 #
@@ -203,7 +224,7 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+t floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -222,8 +243,15 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up && pkill -RTMIN+1 i3blocks
     bindsym XF86AudioLowerVolume exec pulseaudio-ctl down && pkill -RTMIN+1 i3blocks
     bindsym XF86AudioMute exec pulseaudio-ctl mute && pkill -RTMIN+1 i3blocks
-    # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-    # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+    bindsym XF86MonBrightnessUp exec backlight-ctl up 5
+    bindsym XF86MonBrightnessDown exec backlight-ctl down 5
+#
+# some alternatives:
+#
+    bindsym $mod+Up exec backlight-ctl up 5
+    bindsym $mod+Down exec backlight-ctl down 5
+    bindsym $mod+Right exec pulseaudio-ctl up && pkill -RTMIN+1 i3blocks
+    bindsym $mod+Left exec pulseaudio-ctl down && pkill -RTMIN+1 i3blocks
 #
 # Scratchpad:
 #
