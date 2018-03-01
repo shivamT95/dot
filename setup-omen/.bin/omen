@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+cd ~/.dot
+
+stow --adopt compton dunst emacs fontconfig git i3 i3blocks mpv \
+     nvidia-omen onedrive pulseaudio-ctl qutebrowser ranger stack \
+     variety vim xdg xfce4 xfce4-omen zsh
+
+sudo stow --adopt --target=/ root-nvidia-omen
