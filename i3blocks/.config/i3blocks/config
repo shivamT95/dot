@@ -30,7 +30,7 @@ markup=pango
 
 [arch-update]
 label=
-interval= 3600
+interval=3600
 
 # weather
 
@@ -128,6 +128,23 @@ label=
 instance=/mnt/windows
 interval=30
 
+# Key indicators
+#
+# Add the following bindings to i3 config file:
+#
+# bindsym --release Caps_Lock exec pkill -SIGRTMIN+13 i3blocks
+# bindsym --release Num_Lock  exec pkill -SIGRTMIN+13 i3blocks
+#
+[keyindicator]
+instance=CAPS
+interval=once
+signal=13
+
+[keyindicator]
+instance=NUM
+interval=once
+signal=13
+
 # Battery indicator
 #
 # The battery instance defaults to 0.
@@ -162,24 +179,3 @@ interval=1
 #interval=5
 #signal=10
 
-# OpenVPN support
-#
-# Support multiple VPN, with colors.
-#[openvpn]
-#interval=20
-
-# Key indicators
-#
-# Add the following bindings to i3 config file:
-#
-# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
-# [keyindicator]
-# instance=CAPS
-# interval=once
-# signal=11
-
-# [keyindicator]
-# instance=NUM
-# interval=once
-# signal=11
