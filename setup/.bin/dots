@@ -1,9 +1,20 @@
 #! /usr/bin/env zsh
 
+# ready to stow
 cd ~/.dot
 
-stow --adopt compton dunst emacs fontconfig git i3 i3blocks mpv \
-     nvidia-omen onedrive pulseaudio-ctl qutebrowser ranger stack \
-     variety vim xdg xfce4 xfce4-omen zsh
+# basics
+stow --adopt $1 emacs git stack vim zsh
 
-sudo stow --adopt --target=/ root-nvidia-omen
+# linux (i3+xfce4)
+if [[ ! $+WSL ]]; then
+    stow --adopt $1 \
+        compton dunst fontconfig i3 i3blocks mpv onedrive \
+        pulseaudio-ctl qutebrowser ranger variety xdg xfce4
+
+    # omen laptop
+    if [[ $(hostname) == "omen" ]]; then
+        stow --adopt $1 nvidia-omen xfce4-omen
+        sudo stow --adopt --target=/ $1 root-nvidia-omen
+    fi
+fi
