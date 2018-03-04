@@ -5,6 +5,9 @@ if [[ -f ~/.custom.before.zsh ]]; then
     source ~/.custom.before.zsh
 fi
 
+# Read env variables
+source ~/.zsh/variables.zsh
+
 # Add custom completions
 fpath=(~/.zsh/completions $fpath)
 
@@ -31,9 +34,6 @@ fi
 
 # Tell zplug we're done
 zplug load
-
-# Read env variables
-source ~/.zsh/variables.zsh
 
 # Custom commands
 source ~/.zsh/commands.zsh

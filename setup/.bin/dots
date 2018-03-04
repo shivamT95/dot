@@ -7,7 +7,7 @@ cd ~/.dot
 stow --adopt $1 emacs gpg git stack vim zsh
 
 # linux (i3+xfce4)
-if [[ ! $+WSL ]]; then
+if (( $+WSL )); then
     stow --adopt $1 \
         compton dunst fontconfig i3 i3blocks mpv onedrive \
         pulseaudio-ctl qutebrowser ranger variety xdg xfce4
