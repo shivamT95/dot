@@ -104,3 +104,6 @@ wa () {
 
 # pdf reader
 (( $+commands[zathura] )) && alias z='zathura --fork'
+
+# ipinfo.io/json
+alias ipinfo='curl -s ipinfo.io/json'
