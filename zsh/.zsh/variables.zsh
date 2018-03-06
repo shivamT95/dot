@@ -36,8 +36,7 @@ if [[ $(cat /proc/version) =~ "Microsoft" ]]; then
 
     # wsl and nice don't play nice
     unsetopt BG_NICE
-
-    # make gpg work on wsl
-    export GPG_TTY=$(tty)
 fi
 
+# fix pinentry-curses
+export GPG_TTY=$(tty)
