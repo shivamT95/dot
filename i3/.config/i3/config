@@ -31,8 +31,8 @@ set $browser qutebrowser
 set $incognito qutebrowser ':open -p'
 set $alt-browser firefox
 
-set $emacs-open-client emacsclient --create-frame --alternate-editor=''
-set $emacs-kill-daemon emacsclient --eval '(save-buffers-kill-emacs)'
+set $emacs-open-client emacsclient --create-frame
+set $emacs-restart-daemon systemctl --user restart emacs
 
 set $grabscreen xfce4-screenshooter --fullscreen
 set $screenshot xfce4-screenshooter
@@ -133,7 +133,7 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
 
     # text editor
     bindsym $mod+semicolon exec --no-startup-id $emacs-open-client
-    bindsym $mod+Shift+semicolon exec --no-startup-id $emacs-kill-daemon
+    bindsym $mod+Shift+semicolon exec --no-startup-id $emacs-restart-daemon
 
     # screenshot
     bindsym Print exec $grabscreen # fullscreen without mouse
