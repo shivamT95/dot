@@ -18,23 +18,23 @@ set $right l
 set $term xfce4-terminal
 set $guake xfce4-terminal --drop-down
 
-set $music xfce4-terminal --drop-down -e mocp
+set $music xfce4-terminal --drop-down --execute mocp
 set $videos-win mpv --shuffle --sub=no ~/videos
 set $videos-fs mpv --fullscreen --shuffle --sub=no ~/videos
 
 set $launcher xfce4-appfinder --collapsed
 set $appfinder xfce4-appfinder
 
-set $explorer xfce4-terminal --drop-down -e ranger
+set $explorer xfce4-terminal --drop-down --execute ranger
 
 set $browser qutebrowser
-set $incognito qutebrowser ":open -p"
+set $incognito qutebrowser ':open -p'
 set $alt-browser firefox
 
-set $emacs-open-client emacsclient -c
-set $emacs-kill-daemon emacsclient -e '(save-buffers-kill-emacs)'
+set $emacs-open-client emacsclient --create-frame --alternate-editor=''
+set $emacs-kill-daemon emacsclient --eval '(save-buffers-kill-emacs)'
 
-set $grabscreen xfce4-screenshooter -f
+set $grabscreen xfce4-screenshooter --fullscreen
 set $screenshot xfce4-screenshooter
 
 set $wallpaper-next variety --next
