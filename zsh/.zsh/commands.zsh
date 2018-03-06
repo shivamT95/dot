@@ -107,3 +107,6 @@ wa () {
 
 # ipinfo.io/json
 alias ipinfo='curl -s ipinfo.io/json'
+
+# no more!!
+alias sl=ls
