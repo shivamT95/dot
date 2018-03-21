@@ -21,6 +21,11 @@ function cpprun () {
     OUTPUT=$NAME.output
     RESULT=$NAME.result
 
+    if [[ ! -f "$INPUT" || ! -f "$OUTPUT" ]]; then
+        echo "Please create input file ($INPUT) and output file ($OUTPUT)."
+        return 1
+    fi
+
     # compile
     g++ -W -Wall -Werror -Weffc++ -std=c++14 -O2 -fomit-frame-pointer $CPP -o $EXE
 
