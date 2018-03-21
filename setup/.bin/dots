@@ -1,20 +1,23 @@
 #! /usr/bin/env zsh
 
+# stow options
+STOW_OPTIONS=(--adopt --no-folding $@)
+
 # ready to stow
 cd ~/.dot
 
 # basics
-stow --adopt $1 emacs gpg git stack vim zsh
+stow $STOW_OPTIONS emacs gpg git stack vim zsh
 
 # linux (i3+xfce4)
 if (( ! $+WSL )); then
-    stow --adopt $1 \
+    stow $STOW_OPTIONS \
         compton dunst fontconfig i3 i3blocks mpv onedrive \
         pulseaudio-ctl qutebrowser ranger variety xdg xfce4
 
     # omen laptop
     if [[ $(hostname) == "omen" ]]; then
-        stow --adopt $1 nvidia-omen xfce4-omen
-        sudo stow --adopt --target=/ $1 root-nvidia-omen
+        stow $STOW_OPTIONS nvidia-omen xfce4-omen
+        sudo stow $STOW_OPTIONS --target=/ root-nvidia-omen
     fi
 fi
