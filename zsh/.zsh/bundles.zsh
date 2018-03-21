@@ -49,8 +49,8 @@ zplug "plugins/dircycle", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh, if:"(( $+commands[docker] ))"
 zplug "plugins/docker-compose", from:oh-my-zsh, if:"(( $+commands[docker-compose] ))"
 
-# text editor: emacs
-zplug "plugins/emacs", from:oh-my-zsh, if:"(( $+commands[emacs] ))"
+# text editor: emacs (confusing: aliases emacs to emacsclient)
+#zplug "plugins/emacs", from:oh-my-zsh, if:"(( $+commands[emacs] ))"
 
 # encode64/decode64 from console
 zplug "plugins/encode64", from:oh-my-zsh
