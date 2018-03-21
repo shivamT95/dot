@@ -40,16 +40,17 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      github
+     haskell
      helm
      (latex :variables
             latex-enable-auto-fill t)
      markdown
      python
-     spell-checking
-     syntax-checking
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom))
+            shell-default-position 'bottom)
+     spell-checking
+     syntax-checking)
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
