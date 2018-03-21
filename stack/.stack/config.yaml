@@ -6,5 +6,4 @@ templates:
     params:
         author-email: sumitsahrawat@outlook.com
         author-name: Sumit Sahrawat
-        copyright: GPL3
         github-username: sumitsahrawat
