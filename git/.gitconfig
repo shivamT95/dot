@@ -1,12 +1,9 @@
 [user]
-	name = Sumit Sahrawat
-	email = sumitsahrawat@outlook.com
-	signingkey = 8CA713D42039C32A
+	name = Shivam Tyagi
+	email = shivam.tyagi.apm13@iitbhu.ac.in
 [push]
 	default = simple
 [url "https://github.com/"]
 	insteadOf = gh:
 [url "https://aur.archlinux.org/"]
 	insteadOf = aur:
-[commit]
-	gpgsign = true
