@@ -116,8 +116,8 @@ font pango:Noto Mono, FontAwesome, Ionicons, 14px
     bindsym $mod+9 exec $music
 
     # shuffle through videos
-    bindsym $mod+0 exec $videos-win
-    bindsym $mod+Shift+0 exec $videos-fs
+    bindsym $mod+0 exec $videos-fs
+    bindsym $mod+Shift+0 exec $videos-win
     
     # application launcher
     bindsym $mod+p exec $launcher
