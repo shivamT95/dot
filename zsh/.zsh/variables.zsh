@@ -36,6 +36,9 @@ if [[ $(cat /proc/version) =~ "Microsoft" ]]; then
 
     # wsl and nice don't play nice
     unsetopt BG_NICE
+
+    # vcxsrv
+    export DISPLAY=:0
 fi
 
 # fix pinentry-curses
