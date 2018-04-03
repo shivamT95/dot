@@ -124,8 +124,11 @@ zplug "zsh-users/zsh-history-substring-search"
 # Remember aliases already defined
 zplug "djui/alias-tips"
 
-# Library for asynchronous tasks
-#zplug "mafredri/zsh-async"
+# Library for asynchronous tasks (required by pure theme)
+zplug "mafredri/zsh-async"
+
+# Minimal and fast theme
+zplug "sindresorhus/pure", use:pure.zsh, as:theme
 
 # Automatic pairing of delimiters
 zplug "hlissner/zsh-autopair"
