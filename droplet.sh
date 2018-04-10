@@ -9,9 +9,10 @@
 # https://docs.docker.com/install/linux/docker-ce/ubuntu
 
 if [ -n "${SERVER_IP+1}" ]; then
-    DATA=ovpn-data
+    TAG=tunnel
+    DATA=ovpn-data-$TAG
     CLIENT=droplet
-    PORT="${SERVER_PORT:-1194}"
+    PORT=1194
     SERVER=$SERVER_IP
 
     apt-get update
@@ -23,22 +24,29 @@ if [ -n "${SERVER_IP+1}" ]; then
     apt-get update
     apt-get install -y docker-ce
 
+    # Create a docker container to hold config files and certificates.
     docker volume create --name $DATA
+    docker run -v $DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_genconfig -u tcp://$SERVER:$PORT
+    docker run -v $DATA:/etc/openvpn --rm -it kylemanna/openvpn ovpn_initpki
 
-    docker run -v $DATA:/etc/openvpn \
-           --rm kylemanna/openvpn ovpn_genconfig -u tcp://$SERVER:$PORT
+    # Generate client certificate without passphrase.
+    docker run -v $DATA:/etc/openvpn --rm -it kylemanna/openvpn easyrsa build-client-full $CLIENT nopass
 
-    docker run -v $DATA:/etc/openvpn \
-           --rm -it kylemanna/openvpn ovpn_initpki
+    # Retrieve the client configuration with embedded certificates.
+    docker run -v $DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_getclient $CLIENT > ~/$CLIENT.ovpn
 
-    docker run -v $DATA:/etc/openvpn \
-           -d -p $PORT:1194/tcp --cap-add=NET_ADMIN kylemanna/openvpn
+    # Provide a systemd file for docker-openvpn access.
+    curl -L https://raw.githubusercontent.com/kylemanna/docker-openvpn/master/init/docker-openvpn%40.service | tee /etc/systemd/system/docker-openvpn@.service
 
-    docker run -v $DATA:/etc/openvpn \
-           --rm -it kylemanna/openvpn easyrsa build-client-full $CLIENT nopass
+    # Configure systemd unit according to our needs.
+    mkdir /etc/systemd/system/docker-openvpn@.service.d/
+    cat > /etc/systemd/system/docker-openvpn@.service.d/env.conf << EOL
+[Service]
+Environment="PORT=$PORT:1194/tcp"
+EOL
 
-    docker run -v $DATA:/etc/openvpn \
-           --rm kylemanna/openvpn ovpn_getclient $CLIENT > $CLIENT.ovpn
+    # Explain usage.
+    echo "Control docker-openvpn using 'docker-openvpn@${TAG}.service'"
 else
-    echo 'Set $SERVER_IP (and optionally $OVPN_DATA and $CLIENT_NAME) to use this script'
+    echo 'Set $SERVER_IP to use this script'
 fi
