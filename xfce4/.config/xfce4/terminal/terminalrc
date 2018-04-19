@@ -44,4 +44,5 @@ DropdownPosition=40
 MiscNewTabAdjacent=TRUE
 ShortcutsNoHelpkey=TRUE
 ShortcutsNoMenukey=TRUE
+MiscShowRelaunchDialog=TRUE
 
