@@ -40,7 +40,7 @@ settings:
   fonts.messages.warning:
     global: 12px monospace
   fonts.monospace:
-    global: Noto Mono
+    global: Noto Sans Mono
   fonts.prompts:
     global: 12pxt sans-serif
   fonts.statusbar:

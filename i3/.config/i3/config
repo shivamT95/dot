@@ -80,7 +80,7 @@ focus_follows_mouse no
 #
 # Fonts:
 #
-font pango:Noto Mono, FontAwesome, Ionicons, 14px
+font pango:Noto Sans Mono, FontAwesome, Ionicons, 14px
 
 ### Key bindings
 #
