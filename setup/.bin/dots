@@ -15,6 +15,8 @@ if (( ! $+WSL )); then
         compton dunst fontconfig i3 i3blocks mpv onedrive \
         pulseaudio-ctl qutebrowser ranger variety xdg xfce4
 
+    sudo stow $STOW_OPTIONS --target=/ root-sshtunnel
+
     # omen laptop
     if [[ $(hostname) == "omen" ]]; then
         stow $STOW_OPTIONS nvidia-omen xfce4-omen
