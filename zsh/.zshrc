@@ -11,8 +11,11 @@ source ~/.zsh/variables.zsh
 # add custom completions
 fpath=(~/.zsh/completions $fpath)
 
-# source antigen, load bundles only if it exists
-source /usr/share/zsh/share/antigen.zsh && antigen init ~/.antigenrc
+# load antigen
+source ~/.zsh/antigen/antigen.zsh
+
+# load bundles from antigen config
+antigen init ~/.antigenrc
 
 # custom commands
 source ~/.zsh/commands.zsh
