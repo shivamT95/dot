@@ -1,0 +1,113 @@
+#! /usr/bin/env zsh
+
+# consult gh:unixorn/awesome-zsh-plugins
+
+# load oh-my-zsh
+antigen use oh-my-zsh
+
+# aliases for yaourt and pacman
+(( $+commands[pacman] )) && antigen bundle archlinux
+
+# background notifications for long running commands
+antigen bundle bgnotify
+
+# haskell package manager
+(( $+commands[cabal] )) && antigen bundle cabal
+
+# rust build tool
+(( $+commands[cargo] )) && antigen bundle cargo
+
+# suggest package name for missing commands
+antigen bundle command-not-found
+
+# debian/ubuntu
+(( $+commands[apt-get] || $+commands[apt] || $+commands[aptitude] )) && antigen bundle debian
+
+# docker
+(( $+commands[docker] )) && antigen bundle docker
+(( $+commands[docker-compose] )) && antigen bundle docker-compose
+
+# extract anything with 'x'
+antigen bundle extract
+
+# quick-cast for 'bg' and 'fg'
+antigen bundle fancy-ctrl-z
+
+# git plugins
+(( $+commands[git] )) && antigen bundle git
+(( $+commands[git] )) && antigen bundle gitignore
+(( $+commands[hub] )) && antigen bundle github
+(( $+commands[git-extras] )) && antigen bundle git-extras
+
+# gnu-utils
+antigen bundle gnu-utils
+
+# command history search
+#antigen bundle history-substring-search
+
+# history
+antigen bundle history
+
+# npm
+(( $+commands[npm] )) && antigen bundle npm
+
+# pep8, pip, pylint, python
+(( $+commands[pep8] )) && antigen bundle pep8
+(( $+commands[pip] || $+commands[pip2] || $+commands[pip3] )) && antigen bundle pip
+(( $+commands[pylint] )) && antigen bundle pylint
+(( $+commands[python] || $+commands[python2] || $+commands[python3] )) && antigen bundle python
+
+# rust
+(( $+commands[rustc] )) && antigen bundle rust
+
+# safe-paste
+antigen bundle safe-paste
+
+# sbt
+(( $+commands[sbt] )) && antigen bundle sbt
+
+# scala
+(( $+commands[sbt] || $+commands[scala] )) && antigen bundle scala
+
+# haskell-stack
+(( $+commands[stack] )) && antigen bundle stack
+
+# sudo on esc-esc
+antigen bundle sudo
+
+# systemctl
+(( $+commands[systemctl] )) && antigen bundle systemd
+
+################################################################################
+## custom plugins
+
+# syntax highlighting in prompt
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# command history search matching buffer as prefix
+antigen bundle zsh-users/zsh-history-substring-search
+
+# remember aliases already defined
+antigen bundle djui/alias-tips
+
+# library for asynchronous tasks (required by pure theme)
+antigen bundle mafredri/zsh-async
+
+# minimal and fast theme
+antigen bundle sindresorhus/pure
+
+# automatic pairing of delimiters
+antigen bundle hlissner/zsh-autopair
+
+# colored man pages
+antigen bundle ael-code/zsh-colored-man-pages
+
+# solarized dircolors
+antigen bundle joel-porquet/zsh-dircolors-solarized
+
+# display hints right under the editing buffer (maybe later)
+#antigen bundle joepvd/zsh-hints
+
+################################################################################
+
+antigen apply
