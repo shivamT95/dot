@@ -91,7 +91,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 
 # remember aliases already defined
-antigen bundle djui/alias-tips
+#antigen bundle djui/alias-tips
 
 # library for asynchronous tasks (required by pure theme)
 antigen bundle mafredri/zsh-async
