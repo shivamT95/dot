@@ -97,6 +97,7 @@ antigen bundle djui/alias-tips
 antigen bundle mafredri/zsh-async
 
 # minimal and fast theme
+export PURE_PROMPT_SYMBOL='λ'
 antigen bundle sindresorhus/pure
 
 # automatic pairing of delimiters
