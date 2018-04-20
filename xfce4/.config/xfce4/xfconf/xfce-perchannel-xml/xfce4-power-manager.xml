@@ -6,5 +6,9 @@
     <property name="show-tray-icon" type="int" value="1"/>
     <property name="lock-screen-suspend-hibernate" type="bool" value="true"/>
     <property name="general-notification" type="bool" value="true"/>
+    <property name="critical-power-action" type="uint" value="2"/>
+    <property name="inactivity-on-battery" type="uint" value="64"/>
+    <property name="inactivity-sleep-mode-on-battery" type="uint" value="1"/>
+    <property name="inactivity-on-ac" type="uint" value="124"/>
   </property>
 </channel>
