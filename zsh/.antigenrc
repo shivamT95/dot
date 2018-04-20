@@ -5,6 +5,9 @@
 # load oh-my-zsh
 antigen use oh-my-zsh
 
+################################################################################
+## oh-my-zsh plugins
+
 # aliases for yaourt and pacman
 (( $+commands[pacman] )) && antigen bundle archlinux
 
