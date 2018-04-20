@@ -12,7 +12,7 @@ source ~/.zsh/variables.zsh
 fpath=(~/.zsh/completions $fpath)
 
 # load antigen
-source ~/.zsh/antigen/antigen.zsh
+source ~/.zsh/antigen/bin/antigen.zsh
 
 # load bundles from antigen config
 antigen init ~/.antigenrc
