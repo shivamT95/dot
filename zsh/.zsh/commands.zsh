@@ -115,3 +115,12 @@ alias ipinfo='curl -s ipinfo.io/json'
 
 # no more!!
 alias sl=ls
+
+# project euler
+newp () {
+    mkdir Q${1}
+    vim Q${1}/sol.py
+}
+runp () {
+    python Q${1}/sol.py
+}
